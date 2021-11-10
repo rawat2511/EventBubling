@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Event Propagation</title>
+    <style>
+        #btn {
+            outline: none;
+            border: 2px solid black;
+            padding: 10px 20px;
+            font-size: 20px;
+            margin: auto;
+            border-radius: 20px;
+            background-color: palevioletred;
+            color: aliceblue;
+            margin-left: 48%;
+        }
+        #content {
+            display: flex;
+            margin-top: 40px;
+        }
+        button {
+            margin: 20px;
+            padding: 14px;
+            flex-grow: 1;
+            font-size: 20px;
+            background-color: greenyellow;
+            outline: none;
+            border-radius: 14px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">Show</button>
+    <div id="content">
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var content = document.getElementById("content");
+
+        btn.addEventListener("click", () => {
+            var i;
+            for( i = 1; i <= 5; i++ ){
+                var b = document.createElement("button");
+                b.textContent = i;
+                content.appendChild(b);
+            }
+        });
+
+        content.addEventListener("click", () => {
+            var val = event.target.textContent;
+            alert(val);
+        });
+    </script>
+</body>
+</html>
